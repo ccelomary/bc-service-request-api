@@ -40,6 +40,7 @@ The extension contains the following objects:
 - Service Request Status enum
 - Service Request API page
 - Service Request list page
+- Service Request permission set
 - Service Request test codeunit (separate test app)
 
 ## Repository Layout
