@@ -18,6 +18,11 @@ table 50100 "Service Request El"
             Caption = 'Customer No.';
             DataClassification = CustomerContent;
             TableRelation = Customer;
+
+            trigger OnValidate()
+            begin
+                CheckCustomerExists();
+            end;
         }
 
         field(10; Title; Text[100])
@@ -47,9 +52,34 @@ table 50100 "Service Request El"
 
     keys
     {
-        key(PK; "Entry No.", "Customer No.")
+        key(PK; "Entry No.")
         {
             Clustered = true;
         }
+        key(Customer; "Customer No.")
+        {
+        }
     }
+
+    var
+        CustomerMissingErr: Label 'A service request must reference a customer.';
+        CustomerNotFoundErr: Label 'Customer %1 does not exist.', Comment = '%1 = Customer No.';
+
+    trigger OnInsert()
+    begin
+        if "Customer No." = '' then
+            Error(CustomerMissingErr);
+        CheckCustomerExists();
+        Status := Status::Open;
+    end;
+
+    local procedure CheckCustomerExists()
+    var
+        Customer: Record Customer;
+    begin
+        if "Customer No." = '' then
+            exit;
+        if not Customer.Get("Customer No.") then
+            Error(CustomerNotFoundErr, "Customer No.");
+    end;
 }
