@@ -4,7 +4,7 @@ enum 50100 "Service Request Priority EL"
 
     value(0; Low)
     {
-        Caption = 'Low', Locked = true;
+        Caption = 'Low';
     }
 
     value(1; Normal)

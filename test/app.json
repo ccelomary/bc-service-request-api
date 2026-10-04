@@ -1,0 +1,49 @@
+{
+  "id": "2434e9e0-2cac-4d76-b4e5-1b7b0ddc6495",
+  "name": "ServiceRequest Tests",
+  "publisher": "El omary",
+  "version": "1.0.0.0",
+  "brief": "Automated tests for the ServiceRequest extension.",
+  "description": "Test codeunits covering the business rules of the ServiceRequest extension.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "17390068-339d-409e-9a9d-a5ae30ffd7bd",
+      "name": "ServiceRequest",
+      "publisher": "El omary",
+      "version": "1.0.0.0"
+    },
+    {
+      "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14",
+      "name": "Library Assert",
+      "publisher": "Microsoft",
+      "version": "28.0.0.0"
+    },
+    {
+      "id": "5d86850b-0d76-4eca-bd7b-951ad998e997",
+      "name": "Tests-TestLibraries",
+      "publisher": "Microsoft",
+      "version": "28.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "28.0.0.0",
+  "idRanges": [
+    {
+      "from": 50150,
+      "to": 50199
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "17.0",
+  "features": ["NoImplicitWith"]
+}

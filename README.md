@@ -39,6 +39,30 @@ The extension contains the following objects:
 - Service Request Priority enum
 - Service Request Status enum
 - Service Request API page
+- Service Request list page
+- Service Request test codeunit (separate test app)
+
+## Repository Layout
+
+```text
+app/    The extension (tables, enums, pages)
+test/   The test app
+.AL-Go/ and .github/   AL-Go for GitHub build and test workflows
+```
+
+Open `al.code-workspace` in VS Code to work on both apps.
+
+## Tests
+
+The `test` app covers the business rules:
+
+- A new request always starts as `Open`
+- An unknown customer is rejected, on validation and on insert
+- A request without a customer is rejected
+- Entry numbers are assigned automatically and are unique
+- The status can be updated after creation
+
+The tests assert the specific error text. They run in the AL-Go `CI/CD` and pull request workflows; see the Actions tab for the latest run.
 
 ## Service Request Fields
 
@@ -58,7 +82,7 @@ The extension contains the following objects:
 The custom API uses the following metadata:
 
 ```text
-Publisher: mycompany
+Publisher: elomary
 Group: service
 Version: v1.0
 Entity Name: serviceRequest
@@ -68,7 +92,7 @@ Entity Set Name: serviceRequests
 The endpoint follows this structure:
 
 ```text
-https://api.businesscentral.dynamics.com/v2.0/{tenantId}/{environment}/api/mycompany/service/v1.0/companies({companyId})/serviceRequests
+https://api.businesscentral.dynamics.com/v2.0/{tenantId}/{environment}/api/elomary/service/v1.0/companies({companyId})/serviceRequests
 ```
 
 ## Get All Service Requests
@@ -201,10 +225,11 @@ The extension applies the following rules:
 - Microsoft Entra ID
 - OAuth 2.0
 - Postman
+- AL-Go for GitHub
 
 ## Purpose
 
-This project was created as a hands-on Business Central API development exercise.
+This project is a small reference implementation of a custom Business Central API.
 
 It demonstrates how to:
 
@@ -212,6 +237,7 @@ It demonstrates how to:
 - Expose custom tables through API pages
 - Work with REST operations
 - Handle validation and business logic
+- Cover business rules with automated tests in CI
 - Integrate Business Central with external applications
 
 ## Author
